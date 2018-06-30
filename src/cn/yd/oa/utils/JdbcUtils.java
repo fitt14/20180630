@@ -18,6 +18,7 @@ public class JdbcUtils {
 		 Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3333/mysql", "root", "");
 		 return conn;
 		} catch (SQLException e) {
+//			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
 	}
