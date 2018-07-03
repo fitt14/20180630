@@ -1,5 +1,7 @@
 package cn.yd.oa.service;
 
+import java.util.ArrayList;
+
 import cn.yd.oa.dao.ProductDao;
 import cn.yd.oa.model.Product;
 
@@ -12,5 +14,9 @@ public class ProductService {
 	public void save(Product product) {
 		// 此处用来实现业务逻辑代码
 		productDao.save(product);
+	}
+	
+	public ArrayList<Product> queryByName(String keyword){
+		return productDao.queryByName(keyword);
 	}
 }
