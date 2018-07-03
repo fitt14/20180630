@@ -18,12 +18,6 @@ public class BaseDao {
 			// 2: 预编译SQL(此处并未真正执行SQL,因为还有参数未赋值)
 			// ctrl + shift + o 可以导入导出包
 			PreparedStatement pre = conn.prepareStatement(sql);
-			// 3: 对占位符进行赋值操作
-			// pre.setString(1, product.getName()); // 把getName的值赋给第1个?问号
-			// pre.setDouble(2, product.getPrice());
-			// pre.setString(3, product.getRemark());
-			// pre.setInt(4, product.getId());
-			// 4: 执行SQL语句,返回int如果返回为1则代表插入1条数据
 			for(int i=0;i<param.length;i++) {
 				pre.setObject(i+1, param[i]);
 			}

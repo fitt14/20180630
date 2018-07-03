@@ -22,9 +22,20 @@ public class ProductDaoTest {
 	}
 	
 	@Test
+	public void testGetById() {
+		Product product = productDao.getById(2);
+		if(product!=null) {
+			System.out.println(product.getId() + "," + product.getName());
+		}
+		// 默认调用的是系统的toString方法
+//		System.out.println(product.toString());
+	}
+	
+	@Test
 	public void testDelete() {
 		productDao.delete(2);
 	}
+	
 	@Test
 	public void testUpdate() {
 		Product p=new Product();
@@ -35,11 +46,12 @@ public class ProductDaoTest {
 		productDao.update(p);
 	}
 
-	@Test
+	@Test  // 只有添加了注解@Test的方法才是测试方法 
 	public void testSave() {
 		System.out.println("testSave......");
 		// 对象在创建的时候100%会调用构造方法
 		Product p=new Product();
+		String s = new String("abc");
 		p.setName("华为手机");
 		p.setPrice(3600.00);
 		p.setRemark("华为新款手机");
