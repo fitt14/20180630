@@ -4,12 +4,46 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import cn.yd.oa.model.Product;
 import cn.yd.oa.utils.JdbcUtils;
 
 // dao是数据访问层. Java中一个子类只有一个父类(super)
 public class ProductDao extends BaseDao {
+
+	// ctrl + shift +o 导入导出包
+	public ArrayList<Product> queryByName(String name){
+		ArrayList<Product> proList = new ArrayList<Product>();
+		String sql="select * from product where name like ?";
+		// 1: 连接数据库
+		JdbcUtils utils = new JdbcUtils();
+		Connection conn = utils.getConnection();
+		// 2: 编译和执行SQL语句
+		PreparedStatement pre;
+		try {
+			pre = conn.prepareStatement(sql);
+			pre.setString(1, "%" + name + "%");
+			ResultSet rs = pre.executeQuery();
+			while(rs.next()) {
+			   Product product = new Product();
+				// db中一条记录等于Java中的一个对象
+				product.setId(rs.getInt("id")); // 获取id列数据,并且int方式返回
+				product.setName(rs.getString("name"));
+				product.setDate(rs.getDate("date"));
+				product.setPrice(rs.getDouble("price"));
+				product.setRemark(rs.getString("remark"));
+				// 把查询出来的对象存储到集合中
+				proList.add(product);
+			}
+			// 3: 返回查询的结果集
+			return proList;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	
+	}
 	
 	// 编写一个根据ID查询对象的方法
 	public Product getById(Integer id) {

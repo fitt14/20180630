@@ -1,5 +1,6 @@
 package cn.yd.oa.demo;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 // 1: Java中所有类默认都继承Object
@@ -13,5 +14,8 @@ public class ExtendDemo extends Object {
 		System.out.println(demo);
 		System.out.println(demo.toString());
 		// int i; // int[] num = new int[5]		
+		ArrayList<String> list = new ArrayList<String>();
+		list.add("sdfdsf");
+		list.add("sdfsdf");
 	}
 }

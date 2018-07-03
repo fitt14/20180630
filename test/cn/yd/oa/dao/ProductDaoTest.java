@@ -1,5 +1,7 @@
 package cn.yd.oa.dao;
 
+import java.util.ArrayList;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -19,6 +21,18 @@ public class ProductDaoTest {
 	public static void tearDownAfterClass() throws Exception {
 		System.out.println("此方法在测试方法之后执行,通常用来释放资源");
 		productDao = null;
+	}
+	
+	
+	@Test
+	public void testAAA() {
+		ArrayList<Product> proList = productDao.queryByName("%%");
+//		for(int i=0;i<proList.size();i++) {
+//			
+//		}
+		for(Product temp:proList) {
+			System.out.println(temp.toString());
+		}
 	}
 	
 	@Test

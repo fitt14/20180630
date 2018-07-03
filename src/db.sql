@@ -15,4 +15,4 @@ create table product
 /* 数据入库测试*/
 insert into product (name,price,remark) values ('computer',3000.00,'test....');
 
-select * from product;
+select * from product where name like '华为%';
