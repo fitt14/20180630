@@ -7,6 +7,7 @@
 <body>
    <!-- 发送的是http请求,ProductService是不能够识别,需要一个中介Servlet -->
    <!-- 在项目中所有的请求都要从工程名开始,请修改成自己工程名 -->
+   <!-- get post -->
    <form action="/java0630/ProductServlet" method="post">
       <!--  ctrl + atl + 下方向键 -->
            商品名:<input type="text" name="name" /><br/>
